@@ -53,4 +53,17 @@ agat_sp_filter_feature_from_keep_list.pl --gff augustus.hints.clean.TE_FILTERED.
 
 ```
 
+## Step 4: Run AGAT stats on all gff3 files
+
+```
+agat_sp_statistics.pl --gff augustus.hints.clean.TE_FILTERED.gff3 -o augustus.hints.clean.TE_FILTERED.stats.out
+agat_sp_statistics.pl --gff augustus.hints.clean.TE_FILTERED.v1a.gff3 -o augustus.hints.clean.TE_FILTERED.v1a.stats.out
+agat_sp_statistics.pl --gff augustus.hints.clean.TE_FILTERED.v1.gff3 -o augustus.hints.clean.TE_FILTERED.v1.stats.out
+
+
+#eggnog files
+agat_sp_statistics.pl --gff augustus.hints.clean.TE_FILTERED.v1FromBothHap.eggnogFiltered.agatseparated.gff3 -o augustus.hints.clean.TE_FILTERED.v1FromBothHap.eggnogFiltered.agatseparated.stats.out
+agat_sp_statistics.pl --gff augustus.hints.clean.TE_FILTERED.v1aFromBothHap.eggnogFiltered.agatseparated.gff3 -o augustus.hints.clean.TE_FILTERED.v1aFromBothHap.eggnogFiltered.agatseparated.stats.out
+```
+
 
