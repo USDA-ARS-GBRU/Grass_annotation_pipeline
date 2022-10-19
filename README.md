@@ -38,6 +38,10 @@ Note: with the number of RNA-seq samples I had, Trinity did not run well on Atla
 
 ## Step 4: Run Braker
 
+include notes to set up braker?
+
+## Step 5: Filter Braker Predictions 
+
 
 
 
