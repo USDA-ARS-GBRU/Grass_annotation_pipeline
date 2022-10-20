@@ -34,7 +34,21 @@ Gmap was also used but the file it produced was extremely large and did not seem
 use trinity to 
 Note: with the number of RNA-seq samples I had, Trinity did not run well on Atlas.  Atlas appeared to run into memory errors.  Even subsetting the data into tissue and control types exceeded the memory available even in the high mem nodes.  Moving over to ceres fixed the issue.
 
+```
+module load trinityrnaseq
+module list
 
+Trinity --seqType fq \
+--left StAug_Raleigh_Leaf_filtered_read1.fq.gz \
+--right StAug_Raleigh_Leaf_filtered_read2.fq.gz \
+--max_memory 750G
+```
+
+Trinity has tends to insert copies of some smaller transcripts.  We ran Cd-Hits to remove any extra copies with 100% idenity.
+
+```
+cd-hit -i trinity_out_dir.Trinity.fasta -o trinity_out_dir.Trinity.cdhit100.fasta -c 1.00 -n 5 -M 200000 -d 0 -T 24
+```
 
 ## Step 4: Run Braker
 
