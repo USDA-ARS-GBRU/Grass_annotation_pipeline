@@ -6,10 +6,25 @@
 Following the steps given here: https://github.com/PeanutBase/BIND_annotation
 
 Run FastQC
+```
+module load fastqc/0.11.9
 
+cd /project/gbru_grasses/bermuda/Raw_Data/RNA-Seq/
+
+#run fastqc on all samples
+for f in *.gz; do fastqc $f; done
+```
 Check for PE adapters using trimmomatic
 
-Trim reads trimmomatic
+Trim reads using trim-galore
+```
+conda create --prefix /project/gbru_grasses/annotation
+conda activate /project/gbru_grasses/annotation
+conda install -c bioconda trim-galore
+
+#do for all paired samples
+trim_galore --paired Leaf-1_R1_001.fastq.gz Leaf-1_R2_001.fastq.gz
+```
 
 Check and trim SE adapters
 
