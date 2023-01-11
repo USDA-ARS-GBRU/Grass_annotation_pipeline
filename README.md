@@ -36,6 +36,20 @@ cat reads together
 
 Note:  RepeatMasker and RepeatModeler had to be run on Ceres  -  both seem to run much slower on Atlas
 
+Cat both haplotypes of the genome together.
+
+Run RepeatModeler on the full genome file.
+```
+
+#BuildDatabase -name Bermuda_bothHap /project/gbru_grasses/bermuda/Cyntrans_genome_bothHaplotypes.fasta -engine ncbi
+
+#RepeatModeler -database Bermuda_bothHap -engine ncbi -pa 48
+```
+
+Run RepeatMasker
+```
+
+```
 
 
 ## Step 3: Align Reads to the Reference Genome
