@@ -102,6 +102,31 @@ tar -xvf gmes_linux_64.tar
 gunzip gm_key_64.gz
 ```
 
+Setting up Braker3
+```
+module load singularity
+
+singularity build braker3.sif docker://teambraker/braker3:latest
+
+singularity exec braker3.sif print_braker3_setup.py
+#download genemark liscenese
+http://topaz.gatech.edu/GeneMark/license_download.cgi
+gunzip gm_key_64.gz
+mv gm_key_64 ~/.gm_key
+
+singularity exec braker3.sif braker.pl
+
+```
+
+Run Braker2
+```
+singularity exec /project/gbru_grasses/braker3.sif braker.pl --genome /project/gbru_grasses/StAug_Raleigh/genome/Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.fasta.masked --bam /90daydata/gbru_grasses/RaleighChr4flipped_RNAseqStarAligned_merged.sorted.bam --softmasking --cores 40
+```
+
+Run Braker3
+```
+
+```
 ## Step 5: Filter Braker Predictions 
 
 
