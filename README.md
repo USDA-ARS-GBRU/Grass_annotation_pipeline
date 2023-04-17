@@ -79,9 +79,28 @@ Trinity has tends to insert copies of some smaller transcripts.  We ran Cd-Hits 
 cd-hit -i trinity_out_dir.Trinity.fasta -o trinity_out_dir.Trinity.cdhit100.fasta -c 1.00 -n 5 -M 200000 -d 0 -T 24
 ```
 
-## Step 4: Run Braker
+## Step 4: Run Braker2 and 3
 
 include notes to set up braker?
+
+Setting up Braker2
+```
+module load singularity
+module load miniconda
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+
+conda create --prefix /project/gbru_grasses/braker2
+source activate /project/gbru_grasses/braker2
+
+#test that braker is installed
+braker.pl
+#download GeneMark-ES/ET/EP ver 4.68_lic ***program*** (program link is higher up) and liscenese from http://topaz.gatech.edu/GeneMark/license_download.cgi
+gunzip gmes_linux_64.tar.gz
+tar -xvf gmes_linux_64.tar
+gunzip gm_key_64.gz
+```
 
 ## Step 5: Filter Braker Predictions 
 
