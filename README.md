@@ -125,6 +125,32 @@ singularity exec /project/gbru_grasses/braker3.sif braker.pl --genome /project/g
 
 Run Braker3
 
+Running Braker3 with both aligned and raw reads generated errors at the GeneMark step. Looking at responses to issues in the GitHub page, we determined there might be an issue with the naming convension with the genome and GeneMark-ETP despite not running into the problem in preivous runs with braker2.
+Error in the top level stderr
+```
+AUGUSTUS_CONFIG_PATH/species (in this case /usr/share/augustus/config//species) is not writeable. BRAKER will try to copy the AUGUSTUS config directory to a writeable location.
+ERROR in file /opt/BRAKER/scripts/braker.pl at line 5474
+Failed to execute: /usr/bin/perl /opt/ETP/bin/gmetp.pl --cfg /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/GeneMark-ETP/etp_config.yaml --workdir /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/GeneMark-ETP --bam /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/GeneMark-ETP/etp_data/ --cores 1 --softmask  1>/project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/errors/GeneMark-ETP.stdout 2>/project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/errors/GeneMark-ETP.stderr
+Failed to execute: /usr/bin/perl /opt/ETP/bin/gmetp.pl --cfg /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/GeneMark-ETP/etp_config.yaml --workdir /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/GeneMark-ETP --bam /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/GeneMark-ETP/etp_data/ --cores 1 --softmask  1>/project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/errors/GeneMark-ETP.stdout 2>/project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/errors/GeneMark-ETP.stderr
+The most common problem is an expired or not present file ~/.gm_key!
+```
+Error in the GeneMark-ETP.stderr
+```
+FASTA index file /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3/braker/GeneMark-ETP/data/genome.softmasked.fasta.fai created.
+error, file/folder not found: transcripts_merged.fasta.gff
+```
+Error in the GeneMark-ETP.stdout
+```
+GeneMarkS: error on last system call, error code 11
+Abort program!!!
+```
+
+So we re-ran RepeatMasker with shortened entry names
+Making sure the sames don't exceede 12 characters and did not contain any whitespaces
+```
+#naming convention = Stsec_v[1/1a]_[chr/scaff]xxxx
+#changing convention to v[1/1a][chr/scaff]xxxx
+```
 Download Braker3 and supporting programs
 ```
 
