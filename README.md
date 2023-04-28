@@ -124,7 +124,35 @@ singularity exec /project/gbru_grasses/braker3.sif braker.pl --genome /project/g
 ```
 
 Run Braker3
+
+Download Braker3 and supporting programs
 ```
+
+#download genemark liscenese
+http://topaz.gatech.edu/GeneMark/license_download.cgi
+gunzip gm_key_64.gz
+mv gm_key_64 ~/.gm_key
+
+```
+
+Run Braker3
+```
+source activate /project/gbru_grasses/braker2
+
+#set paths to the necessary programs
+export GENEMARK_PATH=/project/gbru_grasses/StAug_Raleigh/GeneMark-ETP/bin
+export PATH=$PATH:/project/gbru_grasses/StAug_Raleigh/ProtHint/bin
+export AUGUSTUS_CONFIG_PATH=/project/gbru_grasses/StAug_Raleigh/AUGUSTUS_CONFIG/config
+
+#using the trimmed raw RNA reads and the masked genome
+perl /project/gbru_grasses/BRAKER/scripts/braker.pl \
+        --genome /project/gbru_grasses/StAug_Raleigh/genome/Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.renamed.fasta.masked \
+        --rnaseq_sets_ids=R0-1_R1_001_val,R1-3_R1_001_val,R2-5_R1_001_val,RDL2_1.filtered_val,RWL3_1.filtered_val,R0-2_R1_001_val,R1-4_R1_001_val,R6-1_R1_001_val,RDL3_1.filtered_val,RWR1_1.filtered_val,R0-3_R1_001_val,R1-5_R1_001_val,R6-2_R1_001_val,RDR1_1.filtered_val,RWR2_1.filtered_val,R0-4_R1_001_val,R2-1_R1_001_val,R6-3_R1_001_val,RDR2_1.filtered_val,RWR3_1.filtered_val,R0-5_R1_001_val,R2-2_R1_001_val,R6-4_R1_001_val,RDR3_1.filtered_val,R1-1_R1_001_val,R2-3_R1_001_val,R6-5_R1_001_val,RWL1_1.filtered_val,R1-2_R1_001_val,R2-4_R1_001_val,RDL1_1.filtered_val,RWL2_1.filtered_val \
+        --threads=48 \
+        --rnaseq_sets_dir=/project/gbru_grasses/StAug_Raleigh/RNA_Seq/ALL2 \
+        --prot_seq /project/gbru_grasses/protein_evidence/braker/protsDB.fa \
+        --softmasking
+
 
 ```
 ## Step 5: Filter Braker Predictions 
