@@ -183,6 +183,37 @@ perl /project/gbru_grasses/BRAKER/scripts/braker.pl \
 ```
 ## Step 5: Filter Braker Predictions 
 
+```
+module load miniconda
+source activate /project/gbru_grasses/braker_filtering
+#module load singularity  ###if on atlas, load this module first, then the others will be available, unnecessary with ceres
+module load cufflinks
+module load genometools
+module load seqtk
 
+cd TE-filtering
+#run genometools to get cleaned version of gtf file
+#gt gtf_to_gff3 -tidy -o augustus.hints-clean.gff3 augustus.hints.gtf
+
+
+
+conda install -c bioconda tesorter
+
+
+
+```
+
+```
+#install agat
+conda install -c bioconda agat
+#install eggnog
+conda install -c bioconda eggnog-mapper
+
+```
+
+Run GFACs
+```
+
+```
 
 
