@@ -216,4 +216,39 @@ Run GFACs
 
 ```
 
+Run Entap
+Download Databases
+```
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz
 
+#these will download during the configuration step
+#NCBI Taxonomic Database (indexed for EnTAP)
+#Gene Ontology Database (indexed for EnTAP)
+#EggNOG DIAMOND Database
+#EggNOG SQL Database
+```
+Run configeration
+```
+source activate /project/gbru_grasses/entap
+#conda deactivate
+
+#had to install diamond, rsem, transdecoder, interproscan
+conda install -c bioconda diamond
+conda install -c bioconda rsem
+conda install -c bioconda transdecoder
+conda install -c bioconda interproscan
+
+export PATH=/home/user/eggnog-mapper:/home/user/eggnog-mapper/eggnogmapper/bin:"$PATH"
+export EGGNOG_DATA_DIR=/project/gbru_grasses/Eggnog/eggnog-mapper-data/
+
+#/project/gbru_grasses/EnTAP-v0.10.8-beta/EnTAP --config \
+#-d uniprot_sprot.fasta \
+#-d uniprot_trembl.fasta \
+#-d plant.57.protein.faa \
+#--out-dir /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap/entap
+```
+
+```
+
+```
