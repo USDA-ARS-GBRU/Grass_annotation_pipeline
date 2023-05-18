@@ -5,7 +5,7 @@
 
 Following the steps given here: https://github.com/PeanutBase/BIND_annotation
 
-Run FastQC
+# Run FastQC
 ```
 module load fastqc/0.11.9
 
@@ -14,6 +14,8 @@ cd /project/gbru_grasses/bermuda/Raw_Data/RNA-Seq/
 #run fastqc on all samples
 for f in *.gz; do fastqc $f; done
 ```
+# Trim Adapters
+
 Check for PE adapters using trimmomatic
 
 Trim reads using trim-galore
@@ -26,8 +28,6 @@ conda install -c bioconda trim-galore
 trim_galore --paired Leaf-1_R1_001.fastq.gz Leaf-1_R2_001.fastq.gz
 ```
 
-Check and trim SE adapters
-
 cat reads together
 
 
@@ -38,7 +38,7 @@ Note:  RepeatMasker and RepeatModeler had to be run on Ceres  -  both seem to ru
 
 Cat both haplotypes of the genome together.
 
-Run RepeatModeler on the full genome file.
+# Run RepeatModeler on the full genome file.
 ```
 
 #BuildDatabase -name Bermuda_bothHap /project/gbru_grasses/bermuda/Cyntrans_genome_bothHaplotypes.fasta -engine ncbi
@@ -46,7 +46,7 @@ Run RepeatModeler on the full genome file.
 #RepeatModeler -database Bermuda_bothHap -engine ncbi -pa 48
 ```
 
-Run RepeatMasker
+# Run RepeatMasker
 ```
 
 ```
@@ -83,7 +83,7 @@ cd-hit -i trinity_out_dir.Trinity.fasta -o trinity_out_dir.Trinity.cdhit100.fast
 
 include notes to set up braker?
 
-Setting up Braker2
+# Setting up Braker2
 ```
 module load singularity
 module load miniconda
@@ -102,7 +102,7 @@ tar -xvf gmes_linux_64.tar
 gunzip gm_key_64.gz
 ```
 
-Setting up Braker3
+# Setting up Braker3
 ```
 module load singularity
 
@@ -118,12 +118,12 @@ singularity exec braker3.sif braker.pl
 
 ```
 
-Run Braker2
+# Run Braker2
 ```
 singularity exec /project/gbru_grasses/braker3.sif braker.pl --genome /project/gbru_grasses/StAug_Raleigh/genome/Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.fasta.masked --bam /90daydata/gbru_grasses/RaleighChr4flipped_RNAseqStarAligned_merged.sorted.bam --softmasking --cores 40
 ```
 
-Run Braker3
+# Run Braker3
 
 Running Braker3 with both aligned and raw reads generated errors at the GeneMark step. Looking at responses to issues in the GitHub page, we determined there might be an issue with the naming convension with the genome and GeneMark-ETP despite not running into the problem in preivous runs with braker2.
 Error in the top level stderr
@@ -150,6 +150,9 @@ Making sure the sames don't exceede 12 characters and did not contain any whites
 ```
 #naming convention = Stsec_v[1/1a]_[chr/scaff]xxxx
 #changing convention to v[1/1a][chr/scaff]xxxx
+
+sed 's/Stsec_v1_/v1/g' Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.fasta.masked | sed 's/Stsec_v1a_/v1a/g' > Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.fasta.renamed.masked
+mv Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.fasta.renamed.masked Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.fasta.masked
 ```
 Download Braker3 and supporting programs
 ```
@@ -161,7 +164,7 @@ mv gm_key_64 ~/.gm_key
 
 ```
 
-Run Braker3
+# Run Braker3
 ```
 source activate /project/gbru_grasses/braker2
 
@@ -203,6 +206,7 @@ conda install -c bioconda tesorter
 
 ```
 
+# Run Statistics on the various gff3 files
 ```
 #install agat
 conda install -c bioconda agat
@@ -211,13 +215,39 @@ conda install -c bioconda eggnog-mapper
 
 ```
 
-Run GFACs
+# Run GFACs
+```
+gFACs.pl \
+ -f braker_2.05_gff3 \
+ --statistics \
+ --min-CDS-size 100 \
+ --min-exon-size 9 \
+ --min-intron-size 9 \
+ --fasta Stenotaphrum_secundatum_RaleighCultivar_genome_bothHaplotypes.AllfixedChr4.reordered.renamed.fasta.masked \
+ --allowed-inframe-stop-codons 0 \
+ --unique-genes-only \
+ --rem-genes-without-start-and-stop-codon \
+ --rem-all-incompletes \
+ --get-fasta-without-introns \
+ --get-protein-fasta \
+ --create-gff3 \
+ -p orthDB_filtered \
+ -O /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3_rawRNA/braker/v1_GFACS/ \
+ /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3_rawRNA/braker/Eggnog/augustus.hints.clean.TE_FILTERED.v1FromBothHap.eggnogFiltered.agatseparated.gff3
+
+export PATH=/home/user/eggnog-mapper:/home/user/eggnog-mapper/eggnogmapper/bin:"$PATH"
+export EGGNOG_DATA_DIR=/project/gbru_grasses/Eggnog/eggnog-mapper-data/
+
+#GFACs removes a lot of other results connecting to the parent entry, so collect the list of gene names and filter the original file
+#grep ">" orthDB_filtered_genes.fasta.faa | rev | cut -d= -f1 | rev > genelist.txt
+#agat_sp_filter_feature_from_keep_list.pl --gff ../TE-filtering/augustus.hints.clean.TE_FILTERED.v1FromBothHap.gff3 --keep_list genelist.txt --output orthDB_filtered_out.geneNameFiltered.gff3
+
+#run statistics on the gff3 file
+agat_sp_statistics.pl --gff orthDB_filtered_out.geneNameFiltered.gff3 -o orthDB_filtered_out.geneNameFiltered.AGATstats.out
 ```
 
-```
-
-Run Entap
-Download Databases
+## Run Entap
+# Download Databases
 ```
 wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz
@@ -232,7 +262,7 @@ wget <most recent database>
 #EggNOG DIAMOND Database
 #EggNOG SQL Database
 ```
-Run configeration
+# Run configeration
 ```
 source activate /project/gbru_grasses/entap
 #conda deactivate
@@ -252,7 +282,7 @@ export EGGNOG_DATA_DIR=/project/gbru_grasses/Eggnog/eggnog-mapper-data/
 #-d plant.57.protein.faa \
 #--out-dir /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap/entap
 ```
-Run entap
+# Run entap
 ```
 /project/gbru_grasses/EnTAP-v0.10.8-beta/EnTAP \
         --runN \
