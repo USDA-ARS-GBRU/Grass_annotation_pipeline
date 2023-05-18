@@ -252,7 +252,15 @@ export EGGNOG_DATA_DIR=/project/gbru_grasses/Eggnog/eggnog-mapper-data/
 #-d plant.57.protein.faa \
 #--out-dir /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap/entap
 ```
-
+Run entap
 ```
+/project/gbru_grasses/EnTAP-v0.10.8-beta/EnTAP \
+        --runN \
+        -i /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3_rawRNA/braker/v1_GFACS/orthDB_filtered_genes.fasta \
+        -d /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3_rawRNA/braker/entap/bin/uniprot_sprot.dmnd \
+        -d /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3_rawRNA/braker/entap/bin/uniprot_trembl.dmnd \
+        -d /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3_rawRNA/braker/entap/bin/eggnog_proteins.dmnd \
+        -d /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap_flippedChr4_braker3_rawRNA/braker/entap/bin/plant.dmnd \
+        -t 8
 
 ```
