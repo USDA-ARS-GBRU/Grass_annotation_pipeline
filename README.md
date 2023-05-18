@@ -222,6 +222,10 @@ Download Databases
 wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz
 
+#Download the most recent database from ncbi
+https://ftp.ncbi.nlm.nih.gov/refseq/release/complete/
+wget <most recent database>
+
 #these will download during the configuration step
 #NCBI Taxonomic Database (indexed for EnTAP)
 #Gene Ontology Database (indexed for EnTAP)
