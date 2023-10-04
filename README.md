@@ -246,6 +246,21 @@ export EGGNOG_DATA_DIR=/project/gbru_grasses/Eggnog/eggnog-mapper-data/
 agat_sp_statistics.pl --gff orthDB_filtered_out.geneNameFiltered.gff3 -o orthDB_filtered_out.geneNameFiltered.AGATstats.out
 ```
 
+Remane all of the genes according to the selected base name
+```
+ cut -f1 orthDB_filtered_out.gff3 | sort | uniq > scaffolds.txt
+ #***nano*** go in and remove the first line in scaffolds.txt
+
+cat scaffolds.txt | while read i
+do
+grep $i orthDB_filtered_out.geneNameFiltered.gff3 | sed "s/=/=SsecRaleigh.H1.Stsec_v1_$i#/g" > orthDB_filtered_out.geneNameFiltered.${i}.gff3
+done
+
+
+```
+
+
+
 ## Run Entap
 # Download Databases
 ```
@@ -282,6 +297,9 @@ export EGGNOG_DATA_DIR=/project/gbru_grasses/Eggnog/eggnog-mapper-data/
 #-d plant.57.protein.faa \
 #--out-dir /project/gbru_grasses/StAug_Raleigh/annotation/braker_Star_bothHap/entap
 ```
+
+
+
 # Run entap
 ```
 /project/gbru_grasses/EnTAP-v0.10.8-beta/EnTAP \
