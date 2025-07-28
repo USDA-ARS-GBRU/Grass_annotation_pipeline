@@ -1,0 +1,5 @@
+# Full run including evaluation and annotation steps.
+pixi run EDTA.pl --anno 1 --evaluate 1 -t 40 --genome Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa
+
+# Soft-masking
+perl ../util/make_masked.pl -genome Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa -minlen 80 -hardmask 0 -t 2 -rmout Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa.mod.EDTA.anno/Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa.mod.EDTA.TEanno.out
