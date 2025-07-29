@@ -1,0 +1,9 @@
+# Align reads to the genome with HISAT2
+hisat2 -f -x Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa -1 ${i}_1.trim.fastq -2 ${i}_2.trim.fastq -S ${i}_align_out.sam
+
+# Convert output to sorted BAM and merge all sample alignments into one file
+samtools view -b ${i}_align_out.sam | samtools sort -o ${i}_align_out.sorted.bam -
+samtools merge -o All_merged.bam *align_out.sorted.bam
+
+# Use StringTie to assemble transcripts
+stringtie -o stringtie.defaultparams.out.gtf -p 48 All_merged.bam 
