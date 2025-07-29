@@ -1,0 +1,11 @@
+# Activate conda env and run full GeMoMa pipeline
+conda activate /conda_envs/GeMoMa
+
+_JAVA_OPTIONS=-Xms5G _JAVA_OPTIONS=-Xmx50G GeMoMa GeMoMaPipeline threads=40 outdir=GeMoMa_gene_pred tblastn=false t=Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.softmasked.fa \
+	s=own i=Sv g=/project/gbru_grasses/Prediction_Training_Data/Setaria_viridis/GCA_005286985.2_Setaria_viridis_v4.0_genomic.fna a=/project/gbru_grasses/Prediction_Training_Data/Setaria_viridis/GCA_005286985.2_Setaria_viridis_v4.0_genomic.gff \
+	s=own i=Pn g=/project/gbru_grasses/Prediction_Training_Data/Paspalum_notatum/GCA_036689595.1_IICAR_Pnotatum_1.0_genomic.fna a=/project/gbru_grasses/Prediction_Training_Data/Paspalum_notatum/GCA_036689595.1_IICAR_Pnotatum_1.0_genomic.gff \
+	s=own i=Ec g=/project/gbru_grasses/Prediction_Training_Data/Indian_finger_millet/GCA_032690845.1_Eleusine_coracana_v1.0_genomic.fna a=/project/gbru_grasses/Prediction_Training_Data/Indian_finger_millet/genomic.gff \
+	s=own i=Ud g=/project/gbru_grasses/Prediction_Training_Data/Urochloa_decumbens/GCA_964030465.3_lpUroDecu1.2_genomic.fna a=/project/gbru_grasses/Prediction_Training_Data/Urochloa_decumbens/GCA_964030465.3_lpUroDecu1.2_genomic.gff \
+	s=own i=Sb g=/project/gbru_grasses/Prediction_Training_Data/Sorghum/GCF_000003195.3_Sorghum_bicolor_NCBIv3_genomic.fna a=/project/gbru_grasses/Prediction_Training_Data/Sorghum/GCF_000003195.3_Sorghum_bicolor_NCBIv3_genomic.gff \
+	s=own i=Os g=/project/gbru_grasses/Prediction_Training_Data/Osativa_Kitaake/GCA_009797565.1_Osativa_Kitaake_v2.0_genomic.fna a=/project/gbru_grasses/Prediction_Training_Data/Osativa_Kitaake/genomic.gff \
+	r=MAPPED ERE.m=/90daydata/gbru_grasses/StAugustine_Raleigh/Annotation/RNAseq_data/Alignments/Original_assembly/All_merged_sorted.bam p=true pc=true AnnotationFinalizer.u=YES GeMoMa.Score=ReAlign AnnotationFinalizer.r=NO o=true
