@@ -1,0 +1,61 @@
+# Combine CDS files from GeMoMa and StringTie and align to genome with GMAP
+gmap -t 40 -D gmap_db/ -d Ssec_Raleigh --no-chimeras --min-identity=0.95 -n 1 -f gff3_match_cdna --gff3-fasta-annotation=2 gemoma-stringtie_combined.fa > gemoma-stringtie_combined.GMAPcDNAalign.gff3 2> gmap_align.out
+gmap -t 40 -D gmap_db/ -d Ssec_Raleigh --no-chimeras --min-identity=0.95 -n 1 -f samse gemoma-stringtie_combined.fa > gemoma-stringtie_combined.GMAPcDNAalign.sam
+
+# Convert SAM to BAM
+samtools view -o gemoma-stringtie_combined.GMAPcDNAalign.bam -b gemoma-stringtie_combined.GMAPcDNAalign.sam
+
+# Run Portcullis
+portcullis full Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fasta gemoma-stringtie_combined.GMAPcDNAalign.bam
+
+=============================================================================================================================================================================================================================
+
+# Run Mikado following the Mikado pick pipeline in [BIND_annotation](https://github.com/PeanutBase/BIND_annotation/tree/main/scripts/mikado)
+  # Step 1
+    list="list.txt"
+    junctions="portcullis.pass.junctions.bed"
+    genome=$1
+
+    singularity exec --bind $PWD mikado.sif mikado configure \
+       --list $list \
+       --reference $genome \
+       --mode nosplit \
+       --scoring HISTORIC/plants.yaml \
+       --copy-scoring plants.yaml \
+       --junctions $junctions configuration.yaml
+
+  # Step 2
+  ## NOTE: Before running this command: 
+  ### Need to revised configure.yaml manually to keep all ORFs.
+  ### We choose nosplit mode, and want to keep all ORFs if any ORFs overlapped.
+  ### Add this under pick in configure.yaml
+  ##### output_format:
+  #####    report_all_orfs: true 
+
+    singularity exec --bind $PWD mikado.sif mikado prepare \
+    	-p 40 \
+    	--json-conf \
+    	configuration.yaml
+
+  # Step 3
+  TransDecoder.LongOrfs -t mikado_prepared.fasta
+  TransDecoder.Predict -t mikado_prepared.fasta --cpu 20 
+
+  # Step 4
+  orfs=$1
+  prefix=$2
+
+  singularity exec --bind $PWD mikado.sif mikado serialise \
+     --start-method spawn \
+     --procs 40 \
+     --json-conf configuration.yaml \
+     --orfs ${orfs} \
+     -mr 1
+
+  singularity exec --bind $PWD mikado.sif mikado pick \
+     --start-method spawn \
+     --loci-out ${prefix}.loci.gff3 \
+     --procs 40 \
+     --json-conf configuration.yaml \
+     --subloci-out ${prefix}.subloci.gff3 \
+     --pad
