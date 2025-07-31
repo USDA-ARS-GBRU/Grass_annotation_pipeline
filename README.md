@@ -39,22 +39,28 @@ Portcullis -- used as input for Mikado
 ## Step 5: Pick best transcript for each gene locus
 
 Combine output from StringTie and GeMoMa
+
 Run Mikado pick pipeline
 
 
 ## Step 6: Filtering gene models
 
 Use TEsorter to remove likely TE genes
+
 Use eggnog-mapper to filter for genes with orthology assignment
+
 Use gFACs to filter out genes with poor structure
 
 
 ## Step 7: Rename gene models
+
 Rename all of the genes according to their order along the genome
 
 
 ## Step 8: Functional annotation
+
 ### Run Entap
+
 Download Databases
 
 Run configuration
