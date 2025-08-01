@@ -1,0 +1,1 @@
+./EnTAP --run -i /project/gbru_okra/Gene_Models_from_Ghent/esculentus/Abelmoschus_esculentus.pep.fa -d ./databases/uniprot_sprot.dmnd -d ./databases/uniprot_trembl.dmnd -d ./databases/nr.dmnd -d ./databases/refseq_plant.prot.dmnd -t 48
