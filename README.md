@@ -7,7 +7,7 @@ Some of the steps were performed following the steps given here: https://github.
 
 Run FastQC
 
-Trim reads using trim-galore and fastp
+Trim reads using Trim Galore and fastp
 
 
 ## Step 2: Masking the genome
@@ -24,8 +24,7 @@ Align (cleaned and trimmed) reads to genome using HISAT2
 
 ## Step 4.A: _De novo_ transcriptome assembly
 
-StringTie
-
+Run StringTie to assemble transcripts
 
 ## Step 4.B: Identify homologous genes
 
