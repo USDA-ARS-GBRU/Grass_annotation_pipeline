@@ -1,1 +1,0 @@
-hisat2 -f -x Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.NCBIfinal.shorternames.fasta.fa -1 ${i}_val_1.trim.fastq -2 ${i}_val_2.trim.fastq -S ${i}_align_out.sam
