@@ -1,0 +1,3 @@
+ml java
+
+java -jar NLR-Annotator-v2.1b.jar -i Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa -x src/mot.txt -y src/store.txt -t 48 -c NLRannot.out.tsv -o NLRannot.out.txt -m NLRannot.out.motifs.bed -g NLRannot.out.gff -f Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa NLRannot.out.nlr.fasta 1000
