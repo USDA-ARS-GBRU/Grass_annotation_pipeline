@@ -106,4 +106,4 @@ Get overlap between different software results
 | AGAT | https://github.com/NBISweden/AGAT |
 | gffread | https://github.com/gpertea/gffread |
 | bedtools | https://github.com/arq5x/bedtools2 |
-
+| samtools | https://github.com/samtools/samtools |
