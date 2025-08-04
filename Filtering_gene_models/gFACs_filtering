@@ -1,0 +1,17 @@
+gFACs.pl \
+	 -f refseq_gff \
+	 --statistics \
+	 --min-CDS-size 100 \
+	 --min-exon-size 9 \
+	 --min-intron-size 9 \
+	 --fasta Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fasta \
+	 --allowed-inframe-stop-codons 0 \
+	 --unique-genes-only \
+	 --rem-genes-without-start-and-stop-codon \
+	 --rem-all-incompletes \
+	 --get-fasta-without-introns \
+	 --get-protein-fasta \
+	 --create-gff3 \
+	 -p SsecRaleigh_v1a_gFACs_filtered \
+	 -O ./gFACs/v1a/ \
+	 SsecRaleigh_mikadopick.TE_FILT.eggnog_filt.v1a.noUTR.gff3
