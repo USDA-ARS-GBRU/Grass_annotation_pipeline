@@ -2,6 +2,12 @@
 
 Some of the steps were performed following the steps given here: https://github.com/PeanutBase/BIND_annotation
 
+### Citation 
+This repository contains scripts used in the following publication:
+
+Add a citation here when it's available.
+
+
 
 ## Step 1: Process RNA-Seq Files
 
@@ -65,4 +71,39 @@ Download Databases
 Run configuration
 
 Run entap
+
+### Run NLR gene predictors
+
+NLR-Annotator (genomic loci)
+
+NLRtracker (NLR genes)
+
+Get overlap between different software results
+
+============================================================================================
+
+## **Software Used**
+| Software  | Location |
+| ------------- | ------------- |
+| FastQC | https://github.com/s-andrews/FastQC |
+| fastp | https://github.com/OpenGene/fastp |
+| Trim Galore | https://github.com/FelixKrueger/TrimGalore |
+| HISAT2 | https://github.com/DaehwanKimLab/hisat2 |
+| EDTA | https://github.com/oushujun/EDTA |
+| StringTie | https://github.com/gpertea/stringtie |
+| GeMoMa | https://www.jstacs.de/index.php/GeMoMa |
+| GMAP | http://research-pub.gene.com/gmap/ |
+| Portcullis | https://github.com/EI-CoreBioinformatics/portcullis |
+| Transdecoder | https://github.com/TransDecoder/TransDecoder |
+| Mikado | https://github.com/EI-CoreBioinformatics/mikado |
+| TEsorter | https://github.com/zhangrengang/TEsorter |
+| eggnog-mapper | https://github.com/eggnogdb/eggnog-mapper |
+| gFACs | https://gitlab.com/PlantGenomicsLab/gFACs |
+| EnTAP | https://gitlab.com/PlantGenomicsLab/EnTAP |
+| DIAMOND | https://github.com/bbuchfink/diamond/ |
+| NLR-Annotator | https://github.com/steuernb/NLR-Annotator |
+| NLRtracker | https://github.com/slt666666/NLRtracker |
+| AGAT | https://github.com/NBISweden/AGAT |
+| gffread | https://github.com/gpertea/gffread |
+| bedtools | https://github.com/arq5x/bedtools2 |
 
