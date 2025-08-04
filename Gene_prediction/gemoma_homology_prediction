@@ -1,5 +1,5 @@
 # Activate conda env and run full GeMoMa pipeline
-conda activate /conda_envs/GeMoMa
+conda activate GeMoMa
 
 _JAVA_OPTIONS=-Xms5G _JAVA_OPTIONS=-Xmx50G GeMoMa GeMoMaPipeline threads=40 outdir=GeMoMa_gene_pred tblastn=false t=Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.softmasked.fa \
 	s=own i=Sv g=Setaria_viridis/GCA_005286985.2_Setaria_viridis_v4.0_genomic.fna a=Setaria_viridis/GCA_005286985.2_Setaria_viridis_v4.0_genomic.gff \
