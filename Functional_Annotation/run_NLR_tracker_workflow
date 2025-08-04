@@ -1,0 +1,20 @@
+# Run InterProScan
+ml java/11
+ml interproscan
+
+# InterProScan will not accept sequences with "*" - remove stops before running.
+interproscan.sh -cpu 48 -f GFF3 -i RENAMED-Final_SsecRaleigh_BothHap_filtered_genes.PEP.nostops.fasta
+
+
+# Download meme-suite from source code
+# Run FIMO
+export PATH=$PATH:/path/to/meme-5.5.8
+./bin/fimo /path/to/meme-5.5.8/share/meme-5.5.8/db/motif_databases/JASPAR/JASPAR2024_CORE_plants_non-redundant.meme SsecRaleigh_BothHap_filtered_genes.CDS.fasta
+
+
+# Download dependencies for R first
+# Run NLRtracker
+ml hmmer3
+ml r/4.4.1
+
+./NLRtracker.sh -s SsecRaleigh_BothHap_filtered_genes.PEP.fasta -o NLRtracker_SsecRaleigh_BothHap_filtered_genes -i SsecRaleigh_BothHap_filtered_genes_PrimaryTranscriptOnly.PEP.nostops.fasta.gff3 -f /path/to/meme-5.5.8/fimo_out/fimo.gff
