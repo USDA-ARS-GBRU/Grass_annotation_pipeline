@@ -1,0 +1,2 @@
+# Soft-masking
+perl ../util/make_masked.pl -genome Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa -minlen 80 -hardmask 0 -t 2 -rmout Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa.mod.EDTA.anno/Stenotaphrum_secundatum_RaleighCultivar_genome_bothHap.fa.mod.EDTA.TEanno.out
