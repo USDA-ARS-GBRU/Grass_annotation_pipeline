@@ -31,3 +31,5 @@ fastp \
   --overrepresentation_analysis \
   -h ./trimmed_reads_metrics/${i}.fastp.html \
   -j ./trimmed_reads_metrics/${i}.fastp.json
+
+done
