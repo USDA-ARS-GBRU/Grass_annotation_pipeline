@@ -13,6 +13,3 @@ FastQC can overestimate the % duplication and overrepresented sequences. Fastp g
 [Run read trimming again with fastp (optional)](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/af27ac5a662d6fc677e8abcffaacaf9482511203/prep_reads/trim_reads_with_fastp)
 
 Read trimming with fastp only necessary if reads contain high % of duplicates/overrepresented sequences after using Trim Galore. Fastp can also be used instead of Trim Galore.
-
-## Align the reads to a reference (in this case, the genome assembly)
-[Perform alignment](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/27ab016d819c567563a2dc4ca6b6721d9e10ef42/prep_reads/HISAT2_align_to_genome)
