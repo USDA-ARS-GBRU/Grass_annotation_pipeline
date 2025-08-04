@@ -3,7 +3,8 @@ mkdir trimmed_reads_metrics
 for i in `ls -1 *_[0-9].fq.gz | sed 's/_[0-9]\.fq\.gz//' | sort -u`;
 
 do
-	        echo "trimming sample ${i}";
+
+echo "trimming sample ${i}";
 
 # now run the read trimmer
 fastp \
