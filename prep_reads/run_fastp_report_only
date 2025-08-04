@@ -1,6 +1,6 @@
 fastp --in1 ../*_R1.trim.fastq.gz --in2 ../*_R2.trim.fastq.gz \
---disable_adapter_trimming \
---overrepresentation_analysis \
---report_title All_trimmed_fastp_report \
---html All_trimmed_fastp_report.html \
---json All_trimmed_fastp_report.json
+  --disable_adapter_trimming \
+  --overrepresentation_analysis \
+  --report_title All_trimmed_fastp_report \
+  --html All_trimmed_fastp_report.html \
+  --json All_trimmed_fastp_report.json
