@@ -1,0 +1,33 @@
+mkdir trimmed_reads_metrics
+
+for i in `ls -1 *_[0-9].fq.gz | sed 's/_[0-9]\.fq\.gz//' | sort -u`;
+
+do
+	        echo "trimming sample ${i}";
+
+# now run the read trimmer
+fastp \
+  --in1 ${i}_1.fq.gz \
+  --out1 ${i}_1.trim.fq.gz \
+  --in2 ${i}_2.fq.gz \
+  --out2 ${i}_2.trim.fq.gz \
+  --thread 16 \
+  --average_qual 10 \
+  --length_required 75 \
+  --trim_front1 10 \
+  --trim_tail1 10 \
+  --cut_front \
+  --cut_front_window_size 3 \
+  --cut_front_mean_quality 15 \
+  --cut_tail \
+  --cut_tail_window_size 3 \
+  --cut_tail_mean_quality 15 \
+  --n_base_limit 5 \
+  --detect_adapter_for_pe \
+  --trim_poly_g \
+  --trim_poly_x \
+  --dedup \
+  --dup_calc_accuracy 6 \
+  --overrepresentation_analysis \
+  -h ./trimmed_reads_metrics/${i}.fastp.html \
+  -j ./trimmed_reads_metrics/${i}.fastp.json
