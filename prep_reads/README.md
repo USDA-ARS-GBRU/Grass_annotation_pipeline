@@ -5,11 +5,11 @@
 
 [Generate fastp report](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/841902ffea91a96a4fc22a9a2aab1d6bbd60d882/prep_reads/run_fastp_report_only)
 
-FastQC can overestimate the % duplication and overrepresented sequences. Fastp generates a more accurate report for those metrics.
+#### Note: FastQC can overestimate the % duplication and overrepresented sequences. Fastp generates a more accurate report for those metrics.
 
 ## Trim reads using standard criteria
 [Run read trimming with Trim Galore](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/af27ac5a662d6fc677e8abcffaacaf9482511203/prep_reads/trim_reads_with_TrimGalore)
 
 [Run read trimming again with fastp (optional)](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/af27ac5a662d6fc677e8abcffaacaf9482511203/prep_reads/trim_reads_with_fastp)
 
-Read trimming with fastp only necessary if reads contain high % of duplicates/overrepresented sequences after using Trim Galore. Fastp can also be used instead of Trim Galore.
+#### Note: Read trimming with fastp only necessary if reads contain high % of duplicates/overrepresented sequences after using Trim Galore. Fastp can also be used instead of Trim Galore.
