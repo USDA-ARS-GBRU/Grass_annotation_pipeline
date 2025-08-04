@@ -1,0 +1,2 @@
+# Combine CDS files from GeMoMa and StringTie and align to genome with GMAP
+gmap -t 40 -D gmap_db/ -d Ssec_Raleigh --no-chimeras --min-identity=0.95 -n 1 -f gff3_match_cdna --gff3-fasta-annotation=2 gemoma-stringtie_combined.fa > gemoma-stringtie_combined.GMAPcDNAalign.gff3 2> gmap_align.out
