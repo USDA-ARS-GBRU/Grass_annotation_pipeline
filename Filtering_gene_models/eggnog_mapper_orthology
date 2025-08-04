@@ -1,0 +1,1 @@
+emapper.py -m diamond --itype proteins -i SsecRaleigh_mikadopick.v1.TE_FILTERED.Final.PEP.fasta -o emapper_SsecRaleigh_mikadopick.v1.TE_FILTERED.Final.PEP --cpu 48 --data_dir ./
