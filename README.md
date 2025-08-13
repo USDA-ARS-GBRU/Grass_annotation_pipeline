@@ -7,6 +7,13 @@ This repository contains scripts used in the following publication:
 
 Add a citation here when it's available.
 
+### Corresponding contact
+
+Amanda Hulse-Kemp at USDA-ARS (amanda.hulse-kemp@usda.gov)
+
+### Funding Support
+
+This is a project supported by the U.S. Department of Agriculture - Agricultural Research Service (USDA-ARS) - Genomics and Bioinformatics Research Unit (GBRU) through CRIS Project No. 6066-21310-006-000-D. Additional project support for riptide sequencing was through Breeding Insight, funded by USDA-ARS.
 
 
 ## Step 1: Process RNA-Seq Files
@@ -80,7 +87,7 @@ NLRtracker (NLR genes)
 
 Get overlap between different software results
 
-============================================================================================
+======================================================================================
 
 ## **Software Used**
 | Software  | Location |
