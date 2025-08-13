@@ -1,6 +1,6 @@
 # Annotation Steps for Grasses
 
-This repository supports the development of the first published genome sequence of the popular turfgrass, St. Augustinegrass. This reference genome provides a high-quality closely related genome for future genomic work with warm-season turfgrasses and will allow for the expansion of the molecular toolkits that are available to turfgrass breeders to allow building tools to enable more efficient selection.
+This repository supports the development of the first published genome sequence of the popular turfgrass, St. Augustinegrass. This reference genome represents a high-quality resource for future genomic work with warm-season turfgrasses and will allow for the expansion of the molecular toolkits that are available to turfgrass breeders, enabling more efficient selection.
 
 Some of the steps were performed following the steps given here: https://github.com/PeanutBase/BIND_annotation
 
