@@ -1,5 +1,7 @@
 # Annotation Steps for Grasses
 
+This repository supports the development of the first published genome sequence of the popular turfgrass, St. Augustinegrass. This reference genome provides a high-quality closely related genome for future genomic work with warm-season turfgrasses and will allow for the expansion of the molecular toolkits that are available to turfgrass breeders to allow building tools to enable more efficient selection.
+
 Some of the steps were performed following the steps given here: https://github.com/PeanutBase/BIND_annotation
 
 ### Citation 
@@ -15,6 +17,9 @@ Amanda Hulse-Kemp at USDA-ARS (amanda.hulse-kemp@usda.gov)
 
 This is a project supported by the U.S. Department of Agriculture - Agricultural Research Service (USDA-ARS) - Genomics and Bioinformatics Research Unit (GBRU) through CRIS Project No. 6066-21310-006-000-D. Additional project support for riptide sequencing was through Breeding Insight, funded by USDA-ARS.
 
+## Description
+
+We present a reference-grade chromosome-scale genome assembly for the popular freeze-tolerant diploid cultivar ‘Raleigh’, utilizing data from PacBio CCS, Illumina, and Hi-C technologies. The reference genome has been resolved into two haplotype assemblies (465.41 and 401.52 Mb), accounting for 95.2% and 82.1% of the expected haplotype genome size respectively, each anchored on the nine chromosomes and a total of 62,454 genes. Analysis of the assembly revealed 50.70% of the genome contained repeats. Analysis of the diversity within the species not covered by the reference genome was obtained by a panel of 79 genotypes including commercial cultivars, breeding lines, and plant introductions by low-coverage sequencing identifying 605,038 single nucleotide polymorphisms (SNPs).
 
 ## Step 1: Process RNA-Seq Files
 
