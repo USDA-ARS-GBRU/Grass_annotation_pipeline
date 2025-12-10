@@ -1,7 +1,7 @@
 # Prepare reads for alignment to reference sequence
 
 ## Quality check with both FastQC and fastp
-[Check quality with FastQC](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/main/prep_reads/runFastQC.sh)
+[Check quality with FastQC](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/main/prep_reads/run_FastQC)
 
 [Generate fastp report](https://github.com/USDA-ARS-GBRU/Grass_annotation_pipeline/blob/main/prep_reads/run_fastp_report_only)
 
