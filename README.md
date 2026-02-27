@@ -6,8 +6,11 @@ Some of the steps were performed following the steps given here: https://github.
 
 ### Citation 
 This repository contains scripts used in the following publication:
+[![DOI](https://zenodo.org/badge/217529920.svg)](https://doi.org/10.1002/tpg2.70144)
 
-Add a citation here when it's available.
+* How to cite -
+  Schoonmaker, A. N., Yow, A. G., Yu, X., Van Der Laat, R., Glaubitz, J. C., Thorsted, K., Robbins, M., Bushman, S., Simpson, S. A., Scheffler, B. E., Lynch, N., Ranney, T. G., Milla-Lewis, S., & Hulse-Kemp, A. M. (2026). A whole-genome assembly of St. Augustinegrass and visualizing diversity within the species. The Plant Genome, e70144. https://doi.org/10.1002/tpg2.70144 
+
 
 ### Corresponding contact
 
@@ -15,7 +18,7 @@ Amanda Hulse-Kemp at USDA-ARS (amanda.hulse-kemp@usda.gov)
 
 ### Funding Support
 
-This is a project supported by the U.S. Department of Agriculture - Agricultural Research Service (USDA-ARS) - Genomics and Bioinformatics Research Unit (GBRU) through CRIS Project No. 6066-21310-006-000-D. Additional project support for riptide sequencing was through Breeding Insight, funded by USDA-ARS.
+*This is a project supported by the U.S. Department of Agriculture - Agricultural Research Service (USDA-ARS) - Genomics and Bioinformatics Research Unit (GBRU) through CRIS Project No. 6066-21310-006-000-D. Additional project support for riptide sequencing was through Breeding Insight, funded by USDA-ARS.*
 
 ## Description
 
